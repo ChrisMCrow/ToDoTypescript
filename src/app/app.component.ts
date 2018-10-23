@@ -15,8 +15,28 @@ export class AppComponent {
   year: number = this.currentTime.getFullYear();
 
   tasks: Task[] = [
-    new Task('Finish homework', 'high'),
-    new Task('Begin brainstorming', 'medium'),
-    new Task('Add README', 'low')
-  ]
+    new Task('Finish homework', 3),
+    new Task('Begin brainstorming', 2),
+    new Task('Add README', 1)
+  ];
+
+  selectedTask: Task = null;
+
+  editTask(clickedTask) {
+    this.selectedTask = clickedTask;
+  }
+
+  finishedEditing() {
+    this.selectedTask = null;
+  }
+
+  priorityColor(currentTask) {
+    if (currentTask.priority === 3) {
+      return "bg-danger";
+    } else if (currentTask.priority === 2) {
+      return "bg-warning";
+    } else {
+      return "bg-info";
+    }
+  }
 }
